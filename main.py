@@ -26,7 +26,7 @@ try:
             else: 
                 print("Please enter 1, 2, or 3")
     
-    settings = Settings.Settings()
+    settings = Settings.SpecSettings()
     log_file = running_functions.LogFile(settings.start_wavelength, settings.end_wavelength, settings.wavelength_step, settings.log_path)
     log_file.init_log()
     click_flag = False

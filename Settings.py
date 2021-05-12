@@ -1,7 +1,7 @@
 import pyautogui
 import json
 
-class Settings(): 
+class SpecSettings(): 
     def __init__(self) -> None:
         print("Please enter time for each frame (optional but strongly encouraged): ")
         self.time_delay = input()
