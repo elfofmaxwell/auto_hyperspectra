@@ -1,4 +1,4 @@
-import sys
+import sys, time
 import pyautogui
 
 import running_functions, Settings
@@ -23,8 +23,6 @@ try:
             elif choice == "3": 
                 layout.update_default()
                 break
-            else: 
-                print("Please enter 1, 2, or 3")
     
     settings = Settings.SpecSettings()
     log_file = running_functions.LogFile(settings.start_wavelength, settings.end_wavelength, settings.wavelength_step, settings.log_path)
@@ -37,6 +35,8 @@ try:
                 click_flag = True
                 pyautogui.click(layout.lsm_xy[0], layout.lsm_xy[1])
                 log_file.log_image()
+                if settings.time_delay: 
+                    time.sleep(int(settings.time_delay))
         else: 
             click_flag = False
 except KeyboardInterrupt: 
