@@ -3,6 +3,7 @@ import pyautogui
 
 import running_functions, Settings
 
+pyautogui.FAILSAFE = False
 print('If want to exit, close window directly or press ctrl+c')
 
 try: 
@@ -31,10 +32,10 @@ try:
     n_img = 0
     input("Press enter to start. ")
     while True: 
-        if pyautogui.pixelMatchesColor(layout.process_bar[0], layout.process_bar[1], layout.process_color, tolerance = 20): 
+        if pyautogui.pixelMatchesColor(layout.layout['process_bar'][0], layout.layout['process_bar'][1], layout.layout['process_color'], tolerance = 20): 
             if click_flag == False: 
                 click_flag = True
-                pyautogui.click(layout.lsm_xy[0], layout.lsm_xy[1])
+                pyautogui.click(layout.layout['lsm_xy'][0], layout.layout['lsm_xy'][1])
                 log_file.log_image(n_img)
                 n_img += 1
                 if settings.time_delay: 
