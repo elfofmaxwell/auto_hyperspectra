@@ -12,6 +12,8 @@ class LogFile():
         self.start_wavelength = start_wavelength
         self.end_wavelength = end_wavelength
         self.wavelength_step = wavelength_step
+        self.image_type = "2D"
+        self.z_num = 0
 
     
     def init_log(self): 
@@ -30,9 +32,15 @@ class LogFile():
         '''
         with open(self.log_path, 'a') as log: 
             log.write(str(n)+'th image at '+time.strftime("%H:%M:%S"))
-            if self.wavelength_step: 
-                log.write(", at "+str(float(self.start_wavelength)+n*self.wavelength_step))
-            log.write("\n\n")
+            if self.image_type == "2D": 
+                if self.wavelength_step: 
+                    log.write(", at "+str(float(self.start_wavelength)+n*self.wavelength_step))
+                log.write("\n\n")
+            elif self.image_type == "3D": 
+                if self.wavelength_step: 
+                    log.write(", " + str(int(n/self.z_num)) + "th z-stack's " + str(n%self.z_num) + "th image, at "+str(float(self.start_wavelength)+int(n/self.z_num)*self.wavelength_step))
+                log.write("\n\n")
+
 
 class ClickLSM(): 
     def __init__(self, layout) -> None:

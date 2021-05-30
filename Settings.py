@@ -15,6 +15,11 @@ class SpecSettings():
         self.log_path = input("log file path (default current folder log.txt): ")
         if not self.log_path: 
             self.log_path = "log.txt"
+        self.image_type = input("If taking 3D stack, type '3D'. If not, type Enter. ")
+        if self.image_type == "3D": 
+            self.z_index = int(input("Please enter the number of steps in z-stack: "))
+        else: 
+            self.z_num = 1
 
 class LayoutSettings(): 
     def __init__(self) -> None:

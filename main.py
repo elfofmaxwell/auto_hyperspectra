@@ -27,7 +27,9 @@ try:
     
     settings = Settings.SpecSettings()
     log_file = running_functions.LogFile(settings.start_wavelength, settings.end_wavelength, settings.wavelength_step, settings.log_path)
-    log_file.init_log()
+    if settings.image_type == "3D": 
+        log_file.image_type = "3D"
+        log_file.z_num = settings.z_num
     click_flag = False
     n_img = 0
     input("Press enter to start. ")
